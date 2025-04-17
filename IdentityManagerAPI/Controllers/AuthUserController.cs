@@ -8,7 +8,7 @@ using System.Net;
 using DataAcess.Repos.IRepos;
 using Models.Domain;
 using IdentityManager.Services.ControllerService.IControllerService;
-using DataAcess.ExternalDb;
+
 
 namespace IdentityManagerAPI.Controllers
 {

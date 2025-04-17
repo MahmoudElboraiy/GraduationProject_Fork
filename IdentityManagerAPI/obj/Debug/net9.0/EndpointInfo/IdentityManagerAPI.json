@@ -67,6 +67,18 @@
         }
       }
     },
+    "/api/Food/GetRecipesWithFullNutrition": {
+      "get": {
+        "tags": [
+          "Food"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Food": {
       "get": {
         "tags": [

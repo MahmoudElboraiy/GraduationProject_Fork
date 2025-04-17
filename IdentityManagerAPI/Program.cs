@@ -1,25 +1,20 @@
-using DataAcess;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using Scalar.AspNetCore;
-using Models.DTOs.Mapper;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
-using Microsoft.AspNetCore.OpenApi;
-using Microsoft.OpenApi.Models;
+﻿using DataAcess.Repos.IRepos;
 using DataAcess.Repos;
-using DataAcess.Repos.IRepos;
-using Models.Domain;
-using Microsoft.Extensions.FileProviders;
-using IdentityManagerAPI.Middlewares;
+using DataAcess;
 using IdentityManager.Services.ControllerService.IControllerService;
 using IdentityManager.Services.ControllerService;
-using DataAcess.ExternalDb;
+using IdentityManagerAPI.Middlewares;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
+using Microsoft.IdentityModel.Tokens;
+using Models.Domain;
+using Models.DTOs.Mapper;
+using Scalar.AspNetCore;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
-
-
 
 // Add services to the container.
 builder.Services.AddControllers();
@@ -28,19 +23,17 @@ builder.Services.AddHttpContextAccessor();
 // Add database context
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-//builder.Services.AddDbContext<ConvertExcelDbContext>(options =>
-//    options.UseSqlServer(builder.Configuration.GetConnectionString("ExternalConnection")));
 
 // Configure Identity
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders();
 
-
 // Add AutoMapper
 builder.Services.AddAutoMapper(typeof(MappingConfig));
 builder.Services.AddAutoMapper(typeof(RecipeProfile));
 
+// Add Identity Managers
 builder.Services.AddScoped<UserManager<ApplicationUser>>();
 builder.Services.AddScoped<SignInManager<ApplicationUser>>();
 builder.Services.AddScoped<RoleManager<IdentityRole>>();
@@ -49,22 +42,27 @@ builder.Services.AddScoped<RoleManager<IdentityRole>>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IUserService, UserService>();
 
-
 // Add Repositories
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IImageRepository, ImageRepository>();
 
-// Add OpenAPI with Bearer Authentication Support
-//builder.Services.AddOpenApi("v1", options =>
-//{
-//    options.AddDocumentTransformer<BearerSecuritySchemeTransformer>();
-//});
-
-
+// Add Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Configure JWT Authentication insted of cookies
+// Add CORS ✅ قبل builder.Build()
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowLocalhost",
+        builder =>
+        {
+            builder.WithOrigins("http://127.0.0.1:5500")
+                   .AllowAnyHeader()
+                   .AllowAnyMethod();
+        });
+});
+
+// Configure JWT Authentication
 var key = Encoding.ASCII.GetBytes(builder.Configuration["ApiSettings:Secret"]);
 builder.Services.AddAuthentication(options =>
 {
@@ -83,36 +81,45 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-
-// Register the global exception handler
+// Exception handling
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 builder.Services.AddProblemDetails();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+// Enable Swagger
+app.UseSwagger();
+app.UseSwaggerUI(c =>
 {
-    //app.MapOpenApi();
-    app.UseSwagger();
-    app.UseSwaggerUI();
-    app.MapScalarApiReference();
-}
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+    c.RoutePrefix = "swagger";
+});
 
-// Use the global exception handler
+// Scalar API
+app.MapScalarApiReference();
+
+// Global exception handler
 app.UseExceptionHandler();
 
-
+// HTTPS redirect
 app.UseHttpsRedirection();
-app.UseAuthentication(); 
+
+// ✅ Enable CORS
+app.UseCors("AllowLocalhost");
+
+// Auth middlewares
+app.UseAuthentication();
 app.UseAuthorization();
 
+// Static files
 app.UseStaticFiles(new StaticFileOptions
 {
     FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "Images")),
     RequestPath = "/Images"
 });
 
+// Controllers
 app.MapControllers();
 
+// 👇 نهاية البايبلاين
 app.Run();

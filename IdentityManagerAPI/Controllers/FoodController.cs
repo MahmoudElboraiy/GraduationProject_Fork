@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using DataAcess;
-using DataAcess.ExternalDb;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
@@ -10,24 +9,43 @@ using Models.DTOs.Food;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 namespace IdentityManagerAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("Api/[controller]")]
     [ApiController]
     public class FoodController : ControllerBase
     {
         //private readonly ConvertExcelDbContext _db;
         private readonly ApplicationDbContext _db;
         private readonly IMapper _mapper;
-        public FoodController( IMapper mapper, ApplicationDbContext db)
+        public FoodController(IMapper mapper, ApplicationDbContext db)
         {
             _db = db;
             _mapper = mapper;
         }
-        [HttpGet]
+
+        // NEW GET API All Recipes With Full Nutrition
+
+        [HttpGet("GetRecipesWithFullNutrition")]
+        public IActionResult GetRecipesWithFullNutrition()
+        {
+            var recipes = _db.Recipe
+                .Include(r => r.Nutrition)  
+                .AsNoTracking()
+                .Take(4992) 
+                .ToList();
+
+            var result = _mapper.Map<List<RecipeWithNutritionDTO>>(recipes);
+
+            return Ok(result);
+        }
+
+        [HttpGet("GetAllIngredients")]
+
         public IActionResult getALL()
         {
             var r = _db.Ingredient.ToList();
             return Ok(r);
         }
+
         [HttpGet("{Name:alpha}")]
         public IActionResult GetSearchByName(string Name)
         {

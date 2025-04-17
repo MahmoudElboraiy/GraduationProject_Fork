@@ -8,6 +8,8 @@ namespace Models.DTOs.Food
 {
     public class RecipeWithNutritionDTO
     {
+        //public int Recipe_Id { get; set; } 
+
         public string Recipe_Name { get; set; } = null!;
 
         public string Description { get; set; } = null!;
