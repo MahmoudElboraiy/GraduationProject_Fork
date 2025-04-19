@@ -13,6 +13,7 @@ namespace DataAcess
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
             // this is pull
+            // this is pull 2 
         }
         public DbSet<ApplicationUser> ApplicationUser { get; set; }
         public DbSet<Image> Image { get; set; }

@@ -33,18 +33,8 @@
   },
   {
     "ContainingType": "IdentityManagerAPI.Controllers.FoodController",
-    "Method": "getALL",
-    "RelativePath": "api/Food",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "IdentityManagerAPI.Controllers.FoodController",
     "Method": "PostSearchByIngredientId",
-    "RelativePath": "api/Food",
+    "RelativePath": "Api/Food",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -70,7 +60,7 @@
   {
     "ContainingType": "IdentityManagerAPI.Controllers.FoodController",
     "Method": "GetSearchByName",
-    "RelativePath": "api/Food/{Name}",
+    "RelativePath": "Api/Food/{Name}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -85,8 +75,18 @@
   },
   {
     "ContainingType": "IdentityManagerAPI.Controllers.FoodController",
+    "Method": "getALL",
+    "RelativePath": "Api/Food/GetAllIngredients",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "IdentityManagerAPI.Controllers.FoodController",
     "Method": "GetRecipesWithFullNutrition",
-    "RelativePath": "api/Food/GetRecipesWithFullNutrition",
+    "RelativePath": "Api/Food/GetRecipesWithFullNutrition",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -96,7 +96,7 @@
   {
     "ContainingType": "IdentityManagerAPI.Controllers.FoodController",
     "Method": "GetSearchByIngredient",
-    "RelativePath": "api/Food/SearchByIngredient/{ingredientName}",
+    "RelativePath": "Api/Food/SearchByIngredient/{ingredientName}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,

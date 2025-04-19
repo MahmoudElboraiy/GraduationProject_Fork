@@ -67,7 +67,7 @@
         }
       }
     },
-    "/api/Food/GetRecipesWithFullNutrition": {
+    "/Api/Food/GetRecipesWithFullNutrition": {
       "get": {
         "tags": [
           "Food"
@@ -79,7 +79,7 @@
         }
       }
     },
-    "/api/Food": {
+    "/Api/Food/GetAllIngredients": {
       "get": {
         "tags": [
           "Food"
@@ -89,7 +89,55 @@
             "description": "OK"
           }
         }
-      },
+      }
+    },
+    "/Api/Food/{Name}": {
+      "get": {
+        "tags": [
+          "Food"
+        ],
+        "parameters": [
+          {
+            "name": "Name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "pattern": "^[A-Za-z]*$",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Api/Food/SearchByIngredient/{ingredientName}": {
+      "get": {
+        "tags": [
+          "Food"
+        ],
+        "parameters": [
+          {
+            "name": "ingredientName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "pattern": "^[A-Za-z]*$",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Api/Food": {
       "post": {
         "tags": [
           "Food"
@@ -154,52 +202,6 @@
                 }
               }
             }
-          }
-        }
-      }
-    },
-    "/api/Food/{Name}": {
-      "get": {
-        "tags": [
-          "Food"
-        ],
-        "parameters": [
-          {
-            "name": "Name",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "pattern": "^[A-Za-z]*$",
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Food/SearchByIngredient/{ingredientName}": {
-      "get": {
-        "tags": [
-          "Food"
-        ],
-        "parameters": [
-          {
-            "name": "ingredientName",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "pattern": "^[A-Za-z]*$",
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
           }
         }
       }
