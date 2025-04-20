@@ -16,6 +16,9 @@ namespace DataAcess.Repos.IRepos
         Task<UserDTO> Register(RegisterRequestDTO registerRequestDTO);
         Task<ApplicationUser> GetUserByID(string userID);
         Task<bool> UpdateAsync(ApplicationUser user);
+        Task<string> ForgotPasswordAsync(ForgotPasswordRequestDTO forgotPasswordRequestDTO);
+        Task<string> ResetPasswordAsync(ResetPasswordDTO resetPasswordDTO);
+
 
     }
 }

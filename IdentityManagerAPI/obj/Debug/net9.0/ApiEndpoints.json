@@ -1,6 +1,22 @@
 [
   {
     "ContainingType": "IdentityManagerAPI.Controllers.AuthUserController",
+    "Method": "ForgotPassword",
+    "RelativePath": "api/AuthUser/forgot-password",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "forgotPasswordRequestDTO",
+        "Type": "Models.DTOs.Auth.ForgotPasswordRequestDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "IdentityManagerAPI.Controllers.AuthUserController",
     "Method": "Login",
     "RelativePath": "api/AuthUser/login",
     "HttpMethod": "POST",
@@ -26,6 +42,22 @@
       {
         "Name": "registerRequestDTO",
         "Type": "Models.DTOs.Auth.RegisterRequestDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "IdentityManagerAPI.Controllers.AuthUserController",
+    "Method": "ResetPassword",
+    "RelativePath": "api/AuthUser/reset-password",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "resetPasswordDTO",
+        "Type": "Models.DTOs.Auth.ResetPasswordDTO",
         "IsRequired": true
       }
     ],

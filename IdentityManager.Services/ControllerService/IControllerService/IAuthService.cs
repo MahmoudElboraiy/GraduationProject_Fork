@@ -1,8 +1,4 @@
 ﻿using Models.DTOs.Auth;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace IdentityManager.Services.ControllerService.IControllerService
@@ -11,5 +7,7 @@ namespace IdentityManager.Services.ControllerService.IControllerService
     {
         Task<object> LoginAsync(LoginRequestDTO loginRequestDTO);
         Task<object> RegisterAsync(RegisterRequestDTO registerRequestDTO);
+        Task<string> ForgotPasswordAsync(ForgotPasswordRequestDTO forgotPasswordRequestDTO);
+        Task<string> ResetPasswordAsync(ResetPasswordDTO resetPasswordDTO);
     }
 }

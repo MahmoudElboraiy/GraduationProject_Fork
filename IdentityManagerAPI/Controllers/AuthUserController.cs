@@ -1,14 +1,7 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Models.DTOs.Auth;
-using Models;
-using System.Net;
-using DataAcess.Repos.IRepos;
-using Models.Domain;
 using IdentityManager.Services.ControllerService.IControllerService;
-
+using System.Threading.Tasks;
 
 namespace IdentityManagerAPI.Controllers
 {
@@ -22,17 +15,37 @@ namespace IdentityManagerAPI.Controllers
         {
             _authService = authService;
         }
+
+        // تسجيل الدخول
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginRequestDTO loginRequestDTO)
         {
             var result = await _authService.LoginAsync(loginRequestDTO);
             return Ok(result);
         }
+
+        // تسجيل حساب جديد
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterRequestDTO registerRequestDTO)
         {
             var result = await _authService.RegisterAsync(registerRequestDTO);
             return Ok(result);
+        }
+
+        // نسيت كلمة المرور
+        [HttpPost("forgot-password")]
+        public async Task<IActionResult> ForgotPassword([FromBody] ForgotPasswordRequestDTO forgotPasswordRequestDTO)
+        {
+            var result = await _authService.ForgotPasswordAsync(forgotPasswordRequestDTO);
+            return Ok(new { message = "Token generated", token = result });
+        }
+
+        // إعادة تعيين كلمة المرور
+        [HttpPost("reset-password")]
+        public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordDTO resetPasswordDTO)
+        {
+            var result = await _authService.ResetPasswordAsync(resetPasswordDTO);
+            return Ok(new { message = result });
         }
     }
 }

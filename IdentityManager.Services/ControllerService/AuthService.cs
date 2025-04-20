@@ -23,6 +23,16 @@ namespace IdentityManager.Services.ControllerService
         {
             return await _userRepository.Login(loginRequestDTO);
         }
+        public async Task<string> ForgotPasswordAsync(ForgotPasswordRequestDTO forgotPasswordRequestDTO)
+        {
+            return await _userRepository.ForgotPasswordAsync(forgotPasswordRequestDTO);
+        }
+
+        public async Task<string> ResetPasswordAsync(ResetPasswordDTO resetPasswordDTO)
+        {
+            return await _userRepository.ResetPasswordAsync(resetPasswordDTO);
+        }
+
 
         public async Task<object> RegisterAsync(RegisterRequestDTO registerRequestDTO)
         {
