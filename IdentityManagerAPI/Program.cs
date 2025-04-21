@@ -50,7 +50,7 @@ builder.Services.AddScoped<IImageRepository, ImageRepository>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Add CORS ✅ قبل builder.Build()
+// Add CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowLocalhost",
@@ -104,7 +104,7 @@ app.UseExceptionHandler();
 // HTTPS redirect
 app.UseHttpsRedirection();
 
-// ✅ Enable CORS
+//  Enable CORS
 app.UseCors("AllowLocalhost");
 
 // Auth middlewares
@@ -121,5 +121,5 @@ app.UseStaticFiles(new StaticFileOptions
 // Controllers
 app.MapControllers();
 
-// 👇 نهاية البايبلاين
+// THE END
 app.Run();

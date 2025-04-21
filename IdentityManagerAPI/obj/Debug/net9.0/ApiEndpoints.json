@@ -117,6 +117,16 @@
   },
   {
     "ContainingType": "IdentityManagerAPI.Controllers.FoodController",
+    "Method": "GetOnly500",
+    "RelativePath": "Api/Food/GetOnly500",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "IdentityManagerAPI.Controllers.FoodController",
     "Method": "GetRecipesWithFullNutrition",
     "RelativePath": "Api/Food/GetRecipesWithFullNutrition",
     "HttpMethod": "GET",

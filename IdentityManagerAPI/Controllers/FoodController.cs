@@ -36,7 +36,19 @@ namespace IdentityManagerAPI.Controllers
             var result = _mapper.Map<List<RecipeWithNutritionDTO>>(recipes);
             return Ok(result);
         }
+        // Get all recipes with their nutrition info
+        [HttpGet("GetOnly500")]
+        public IActionResult GetOnly500()
+        {
+            var recipes = _db.Recipe
+                .Include(r => r.Nutrition)
+                .AsNoTracking()
+                .Take(500)
+                .ToList();
 
+            var result = _mapper.Map<List<RecipeWithNutritionDTO>>(recipes);
+            return Ok(result);
+        }
         // Get all ingredients from DB
         [HttpGet("GetAllIngredients")]
         public IActionResult getALL()

@@ -16,7 +16,7 @@ namespace IdentityManagerAPI.Controllers
             _authService = authService;
         }
 
-        // تسجيل الدخول
+        // Login
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginRequestDTO loginRequestDTO)
         {
@@ -24,7 +24,7 @@ namespace IdentityManagerAPI.Controllers
             return Ok(result);
         }
 
-        // تسجيل حساب جديد
+        // Register
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterRequestDTO registerRequestDTO)
         {
@@ -32,7 +32,7 @@ namespace IdentityManagerAPI.Controllers
             return Ok(result);
         }
 
-        // نسيت كلمة المرور
+        // Forgot-Password
         [HttpPost("forgot-password")]
         public async Task<IActionResult> ForgotPassword([FromBody] ForgotPasswordRequestDTO forgotPasswordRequestDTO)
         {
@@ -40,7 +40,7 @@ namespace IdentityManagerAPI.Controllers
             return Ok(new { message = "Token generated", token = result });
         }
 
-        // إعادة تعيين كلمة المرور
+        // Reset-Password
         [HttpPost("reset-password")]
         public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordDTO resetPasswordDTO)
         {

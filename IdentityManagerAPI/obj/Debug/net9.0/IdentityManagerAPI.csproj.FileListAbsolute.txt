@@ -539,10 +539,10 @@ D:\Test\IdentityManagerAPI\obj\Debug\net9.0\staticwebassets\msbuild.build.Identi
 D:\Test\IdentityManagerAPI\obj\Debug\net9.0\staticwebassets\msbuild.buildMultiTargeting.IdentityManagerAPI.props
 D:\Test\IdentityManagerAPI\obj\Debug\net9.0\staticwebassets\msbuild.buildTransitive.IdentityManagerAPI.props
 D:\Test\IdentityManagerAPI\obj\Debug\net9.0\staticwebassets.pack.json
+D:\Test\IdentityManagerAPI\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 D:\Test\IdentityManagerAPI\obj\Debug\net9.0\Identity.A94DDE34.Up2Date
 D:\Test\IdentityManagerAPI\obj\Debug\net9.0\IdentityManagerAPI.dll
 D:\Test\IdentityManagerAPI\obj\Debug\net9.0\refint\IdentityManagerAPI.dll
 D:\Test\IdentityManagerAPI\obj\Debug\net9.0\IdentityManagerAPI.pdb
 D:\Test\IdentityManagerAPI\obj\Debug\net9.0\IdentityManagerAPI.genruntimeconfig.cache
 D:\Test\IdentityManagerAPI\obj\Debug\net9.0\ref\IdentityManagerAPI.dll
-D:\Test\IdentityManagerAPI\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt

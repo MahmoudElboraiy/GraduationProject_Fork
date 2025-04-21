@@ -141,6 +141,18 @@
         }
       }
     },
+    "/Api/Food/GetOnly500": {
+      "get": {
+        "tags": [
+          "Food"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/Api/Food/GetAllIngredients": {
       "get": {
         "tags": [
