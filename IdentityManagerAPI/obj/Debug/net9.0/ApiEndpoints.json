@@ -1,24 +1,8 @@
 [
   {
     "ContainingType": "IdentityManagerAPI.Controllers.AuthUserController",
-    "Method": "ForgotPassword",
-    "RelativePath": "api/AuthUser/forgot-password",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "forgotPasswordRequestDTO",
-        "Type": "Models.DTOs.Auth.ForgotPasswordRequestDTO",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "IdentityManagerAPI.Controllers.AuthUserController",
     "Method": "Login",
-    "RelativePath": "api/AuthUser/login",
+    "RelativePath": "api/AuthUser/AuthenticateUser",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -34,7 +18,7 @@
   {
     "ContainingType": "IdentityManagerAPI.Controllers.AuthUserController",
     "Method": "Register",
-    "RelativePath": "api/AuthUser/register",
+    "RelativePath": "api/AuthUser/RegisterUser",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -49,8 +33,24 @@
   },
   {
     "ContainingType": "IdentityManagerAPI.Controllers.AuthUserController",
+    "Method": "ForgotPassword",
+    "RelativePath": "api/AuthUser/RequestPasswordReset",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "forgotPasswordRequestDTO",
+        "Type": "Models.DTOs.Auth.ForgotPasswordRequestDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "IdentityManagerAPI.Controllers.AuthUserController",
     "Method": "ResetPassword",
-    "RelativePath": "api/AuthUser/reset-password",
+    "RelativePath": "api/AuthUser/ResetUserPassword",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -64,9 +64,97 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "IdentityManagerAPI.Controllers.FavoritesController",
+    "Method": "GetFavorites",
+    "RelativePath": "api/Favorites",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "IdentityManagerAPI.Controllers.FavoritesController",
+    "Method": "AddToFavorites",
+    "RelativePath": "api/Favorites/{recipeId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "recipeId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "IdentityManagerAPI.Controllers.FavoritesController",
+    "Method": "RemoveFromFavorites",
+    "RelativePath": "api/Favorites/{recipeId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "recipeId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "IdentityManagerAPI.Controllers.FoodController",
+    "Method": "getALL",
+    "RelativePath": "Api/Food/AllIngredients",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "IdentityManagerAPI.Controllers.FoodController",
+    "Method": "Get500Recipes",
+    "RelativePath": "Api/Food/First500RecipesWithNutritionAndIngredients",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "IdentityManagerAPI.Controllers.FoodController",
+    "Method": "GetRecipesWithFullNutrition",
+    "RelativePath": "Api/Food/RecipesWithNutritionAndIngredients",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "IdentityManagerAPI.Controllers.FoodController",
+    "Method": "GetSearchByIngredient",
+    "RelativePath": "Api/Food/SearchIngredientIdsByName/{ingredientName}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ingredientName",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "IdentityManagerAPI.Controllers.FoodController",
     "Method": "PostSearchByIngredientId",
-    "RelativePath": "Api/Food",
+    "RelativePath": "Api/Food/SearchRecipesByIngredientIds",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -92,59 +180,13 @@
   {
     "ContainingType": "IdentityManagerAPI.Controllers.FoodController",
     "Method": "GetSearchByName",
-    "RelativePath": "Api/Food/{Name}",
+    "RelativePath": "Api/Food/SearchRecipesByName/{Name}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "Name",
-        "Type": "System.String",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "IdentityManagerAPI.Controllers.FoodController",
-    "Method": "getALL",
-    "RelativePath": "Api/Food/GetAllIngredients",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "IdentityManagerAPI.Controllers.FoodController",
-    "Method": "GetOnly500",
-    "RelativePath": "Api/Food/GetOnly500",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "IdentityManagerAPI.Controllers.FoodController",
-    "Method": "GetRecipesWithFullNutrition",
-    "RelativePath": "Api/Food/GetRecipesWithFullNutrition",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "IdentityManagerAPI.Controllers.FoodController",
-    "Method": "GetSearchByIngredient",
-    "RelativePath": "Api/Food/SearchByIngredient/{ingredientName}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "ingredientName",
         "Type": "System.String",
         "IsRequired": true
       }

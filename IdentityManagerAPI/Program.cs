@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using Models.Domain;
 using Models.DTOs.Mapper;
 using Scalar.AspNetCore;
@@ -48,7 +49,38 @@ builder.Services.AddScoped<IImageRepository, ImageRepository>();
 
 // Add Swagger
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Graduation project APIs ", Version = "v1" });
+
+    // JWT Bearer Support
+    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        Description = "Enter 'Bearer' [space] and then your token",
+        Name = "Authorization",
+        In = ParameterLocation.Header,
+        Type = SecuritySchemeType.ApiKey,
+        Scheme = "Bearer"
+    });
+
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                },
+                Scheme = "oauth2",
+                Name = "Bearer",
+                In = ParameterLocation.Header,
+            },
+            new List<string>()
+        }
+    });
+});
 
 // Add CORS
 builder.Services.AddCors(options =>
@@ -104,7 +136,7 @@ app.UseExceptionHandler();
 // HTTPS redirect
 app.UseHttpsRedirection();
 
-//  Enable CORS
+// Enable CORS
 app.UseCors("AllowLocalhost");
 
 // Auth middlewares
@@ -121,5 +153,4 @@ app.UseStaticFiles(new StaticFileOptions
 // Controllers
 app.MapControllers();
 
-// THE END
 app.Run();

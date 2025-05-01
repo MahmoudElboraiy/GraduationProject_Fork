@@ -5,7 +5,7 @@
     "version": "1.0"
   },
   "paths": {
-    "/api/AuthUser/login": {
+    "/api/AuthUser/AuthenticateUser": {
       "post": {
         "tags": [
           "AuthUser"
@@ -36,7 +36,7 @@
         }
       }
     },
-    "/api/AuthUser/register": {
+    "/api/AuthUser/RegisterUser": {
       "post": {
         "tags": [
           "AuthUser"
@@ -67,7 +67,7 @@
         }
       }
     },
-    "/api/AuthUser/forgot-password": {
+    "/api/AuthUser/RequestPasswordReset": {
       "post": {
         "tags": [
           "AuthUser"
@@ -98,7 +98,7 @@
         }
       }
     },
-    "/api/AuthUser/reset-password": {
+    "/api/AuthUser/ResetUserPassword": {
       "post": {
         "tags": [
           "AuthUser"
@@ -129,7 +129,63 @@
         }
       }
     },
-    "/Api/Food/GetRecipesWithFullNutrition": {
+    "/api/Favorites/{recipeId}": {
+      "post": {
+        "tags": [
+          "Favorites"
+        ],
+        "parameters": [
+          {
+            "name": "recipeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Favorites"
+        ],
+        "parameters": [
+          {
+            "name": "recipeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Favorites": {
+      "get": {
+        "tags": [
+          "Favorites"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Api/Food/RecipesWithNutritionAndIngredients": {
       "get": {
         "tags": [
           "Food"
@@ -141,7 +197,7 @@
         }
       }
     },
-    "/Api/Food/GetOnly500": {
+    "/Api/Food/First500RecipesWithNutritionAndIngredients": {
       "get": {
         "tags": [
           "Food"
@@ -153,7 +209,7 @@
         }
       }
     },
-    "/Api/Food/GetAllIngredients": {
+    "/Api/Food/AllIngredients": {
       "get": {
         "tags": [
           "Food"
@@ -165,7 +221,7 @@
         }
       }
     },
-    "/Api/Food/{Name}": {
+    "/Api/Food/SearchRecipesByName/{Name}": {
       "get": {
         "tags": [
           "Food"
@@ -188,7 +244,7 @@
         }
       }
     },
-    "/Api/Food/SearchByIngredient/{ingredientName}": {
+    "/Api/Food/SearchIngredientIdsByName/{ingredientName}": {
       "get": {
         "tags": [
           "Food"
@@ -211,7 +267,7 @@
         }
       }
     },
-    "/Api/Food": {
+    "/Api/Food/SearchRecipesByIngredientIds": {
       "post": {
         "tags": [
           "Food"

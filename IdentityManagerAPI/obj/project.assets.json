@@ -6006,9 +6006,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Test\\IdentityManagerAPI\\IdentityManagerAPI.csproj",
-      "projectName": "IdentityManagerAPI",
-      "projectPath": "D:\\Test\\IdentityManagerAPI\\IdentityManagerAPI.csproj",
+      "projectUniqueName": "D:\\Test\\IdentityManagerAPI\\Graduation project APIs.csproj",
+      "projectName": "Graduation project APIs",
+      "projectPath": "D:\\Test\\IdentityManagerAPI\\Graduation project APIs.csproj",
       "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
       "outputPath": "D:\\Test\\IdentityManagerAPI\\obj\\",
       "projectStyle": "PackageReference",

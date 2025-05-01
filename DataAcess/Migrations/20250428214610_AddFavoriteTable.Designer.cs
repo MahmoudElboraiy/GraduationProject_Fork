@@ -4,6 +4,7 @@ using DataAcess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAcess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250428214610_AddFavoriteTable")]
+    partial class AddFavoriteTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,6 +24,26 @@ namespace DataAcess.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("DataAcess.Models.Domain.Favorite", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("RecipeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Favorites");
+                });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
@@ -300,27 +323,6 @@ namespace DataAcess.Migrations
                     b.ToTable("RecipeRawDTO");
                 });
 
-            modelBuilder.Entity("Models.Domain.FavoriteRecipe", b =>
-                {
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("RecipeId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("AddedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("ImageId")
-                        .HasColumnType("int");
-
-                    b.HasKey("UserId", "RecipeId");
-
-                    b.HasIndex("RecipeId");
-
-                    b.ToTable("FavoriteRecipes");
-                });
-
             modelBuilder.Entity("Models.Domain.Image", b =>
                 {
                     b.Property<int>("Id")
@@ -397,26 +399,7 @@ namespace DataAcess.Migrations
                     b.ToTable("Nutrition");
                 });
 
-            modelBuilder.Entity("Models.Domain.Recipe_Ingredient", b =>
-                {
-                    b.Property<int>("RecipeId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Ingredient_Id")
-                        .HasColumnType("int");
-
-                    b.Property<double?>("Amount")
-                        .HasMaxLength(50)
-                        .HasColumnType("float");
-
-                    b.HasKey("RecipeId", "Ingredient_Id");
-
-                    b.HasIndex("Ingredient_Id");
-
-                    b.ToTable("Recipe_Ingredient");
-                });
-
-            modelBuilder.Entity("Recipe", b =>
+            modelBuilder.Entity("Models.Domain.Recipe", b =>
                 {
                     b.Property<int>("Recipe_Id")
                         .ValueGeneratedOnAdd()
@@ -446,7 +429,26 @@ namespace DataAcess.Migrations
                     b.ToTable("Recipe");
                 });
 
-            modelBuilder.Entity("ApplicationUser", b =>
+            modelBuilder.Entity("Models.Domain.Recipe_Ingredient", b =>
+                {
+                    b.Property<int>("RecipeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Ingredient_Id")
+                        .HasColumnType("int");
+
+                    b.Property<double?>("Amount")
+                        .HasMaxLength(50)
+                        .HasColumnType("float");
+
+                    b.HasKey("RecipeId", "Ingredient_Id");
+
+                    b.HasIndex("Ingredient_Id");
+
+                    b.ToTable("Recipe_Ingredient");
+                });
+
+            modelBuilder.Entity("Models.Domain.ApplicationUser", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
@@ -456,6 +458,8 @@ namespace DataAcess.Migrations
 
                     b.Property<int?>("ImageId")
                         .HasColumnType("int");
+
+                    b.HasIndex("ImageId");
 
                     b.HasDiscriminator().HasValue("ApplicationUser");
                 });
@@ -511,28 +515,9 @@ namespace DataAcess.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Models.Domain.FavoriteRecipe", b =>
-                {
-                    b.HasOne("Recipe", "Recipe")
-                        .WithMany("FavoritedBy")
-                        .HasForeignKey("RecipeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ApplicationUser", "User")
-                        .WithMany("FavoriteRecipes")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Recipe");
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("Models.Domain.Nutrition", b =>
                 {
-                    b.HasOne("Recipe", "Recipe")
+                    b.HasOne("Models.Domain.Recipe", "Recipe")
                         .WithOne("Nutrition")
                         .HasForeignKey("Models.Domain.Nutrition", "Recipe_Id")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -549,7 +534,7 @@ namespace DataAcess.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Recipe", "Recipe")
+                    b.HasOne("Models.Domain.Recipe", "Recipe")
                         .WithMany("Recipe_Ingredient")
                         .HasForeignKey("RecipeId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -560,24 +545,26 @@ namespace DataAcess.Migrations
                     b.Navigation("Recipe");
                 });
 
+            modelBuilder.Entity("Models.Domain.ApplicationUser", b =>
+                {
+                    b.HasOne("Models.Domain.Image", "Image")
+                        .WithMany()
+                        .HasForeignKey("ImageId");
+
+                    b.Navigation("Image");
+                });
+
             modelBuilder.Entity("Models.Domain.Ingredient", b =>
                 {
                     b.Navigation("Recipe_Ingredient");
                 });
 
-            modelBuilder.Entity("Recipe", b =>
+            modelBuilder.Entity("Models.Domain.Recipe", b =>
                 {
-                    b.Navigation("FavoritedBy");
-
                     b.Navigation("Nutrition")
                         .IsRequired();
 
                     b.Navigation("Recipe_Ingredient");
-                });
-
-            modelBuilder.Entity("ApplicationUser", b =>
-                {
-                    b.Navigation("FavoriteRecipes");
                 });
 #pragma warning restore 612, 618
         }

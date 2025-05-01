@@ -1,12 +1,8 @@
-﻿using AutoMapper; // For mapping entities to DTOs
+﻿using AutoMapper;
 using DataAcess;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Data.SqlClient;
-using Microsoft.EntityFrameworkCore; // For EF Core operations
-using Models.Domain; // Database models
-using Models.DTOs.Food; // DTOs for API responses
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using Microsoft.EntityFrameworkCore;
+using Models.DTOs.Food;
 
 namespace IdentityManagerAPI.Controllers
 {
@@ -14,8 +10,8 @@ namespace IdentityManagerAPI.Controllers
     [ApiController]
     public class FoodController : ControllerBase
     {
-        private readonly ApplicationDbContext _db; // Database context
-        private readonly IMapper _mapper; // AutoMapper for object mapping
+        private readonly ApplicationDbContext _db;
+        private readonly IMapper _mapper;
 
         public FoodController(IMapper mapper, ApplicationDbContext db)
         {
@@ -23,42 +19,62 @@ namespace IdentityManagerAPI.Controllers
             _mapper = mapper;
         }
 
-        // Get all recipes with their nutrition info
-        [HttpGet("GetRecipesWithFullNutrition")]
+        // Get up to 4992 recipes with nutrition and ingredients
+        [HttpGet("RecipesWithNutritionAndIngredients")]
         public IActionResult GetRecipesWithFullNutrition()
         {
-            var recipes = _db.Recipe
-                .Include(r => r.Nutrition)
-                .AsNoTracking()
-                .Take(4992)
-                .ToList();
+            try
+            {
+                var recipes = _db.Recipe
+                    .Include(r => r.Nutrition)
+                    .Include(r => r.Recipe_Ingredient)
+                        .ThenInclude(ri => ri.Ingredient)
+                    .AsNoTracking()
+                    .Take(4992)
+                    .ToList();
 
-            var result = _mapper.Map<List<RecipeWithNutritionDTO>>(recipes);
-            return Ok(result);
+                var result = _mapper.Map<List<RecipeWithNutritionDTO>>(recipes);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An error occurred while retrieving recipes: " + ex.Message);
+            }
         }
-        // Get all recipes with their nutrition info
-        [HttpGet("GetOnly500")]
-        public IActionResult GetOnly500()
+
+        // Get 500 recipes with nutrition and ingredients
+        [HttpGet("First500RecipesWithNutritionAndIngredients")]
+        public IActionResult Get500Recipes()
         {
-            var recipes = _db.Recipe
-                .Include(r => r.Nutrition)
-                .AsNoTracking()
-                .Take(500)
-                .ToList();
+            try
+            {
+                var recipes = _db.Recipe
+                    .Include(r => r.Nutrition)
+                    .Include(r => r.Recipe_Ingredient)
+                        .ThenInclude(ri => ri.Ingredient)
+                    .AsNoTracking()
+                    .Take(500)
+                    .ToList();
 
-            var result = _mapper.Map<List<RecipeWithNutritionDTO>>(recipes);
-            return Ok(result);
+                var result = _mapper.Map<List<RecipeWithNutritionDTO>>(recipes);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An error occurred while retrieving recipes: " + ex.Message);
+            }
         }
-        // Get all ingredients from DB
-        [HttpGet("GetAllIngredients")]
+
+        // Get all ingredients
+        [HttpGet("AllIngredients")]
         public IActionResult getALL()
         {
             var r = _db.Ingredient.ToList();
             return Ok(r);
         }
 
-        // Search for recipes by name
-        [HttpGet("{Name:alpha}")]
+        // Search recipes by name (up to 50)
+        [HttpGet("SearchRecipesByName/{Name:alpha}")]
         public IActionResult GetSearchByName(string Name)
         {
             var recipes = _db.Recipe
@@ -67,7 +83,6 @@ namespace IdentityManagerAPI.Controllers
                 .AsNoTracking()
                 .ToList();
 
-            // Load related Nutrition and Ingredients
             foreach (var recipe in recipes)
             {
                 _db.Entry(recipe).Reference(r => r.Nutrition).Load();
@@ -83,8 +98,8 @@ namespace IdentityManagerAPI.Controllers
             return Ok(recipeWithNutritionDTOs);
         }
 
-        // Search ingredients by name (returns IDs)
-        [HttpGet("SearchByIngredient/{ingredientName:alpha}")]
+        // Search ingredient IDs by name
+        [HttpGet("SearchIngredientIdsByName/{ingredientName:alpha}")]
         public IActionResult GetSearchByIngredient(string ingredientName)
         {
             ingredientName = ingredientName.ToLowerInvariant();
@@ -97,8 +112,8 @@ namespace IdentityManagerAPI.Controllers
             return Ok(ingredientList.ToList());
         }
 
-        // Get recipes that include any of the given ingredient IDs
-        [HttpPost]
+        // Search recipes by ingredient IDs (up to 50)
+        [HttpPost("SearchRecipesByIngredientIds")]
         public ActionResult<List<RecipeWithNutritionDTO>> PostSearchByIngredientId([FromBody] List<int> ingredientsId)
         {
             var recipes = _db.Recipe_Ingredient
@@ -114,5 +129,10 @@ namespace IdentityManagerAPI.Controllers
             var recipeWithNutritionDTOs = _mapper.Map<List<RecipeWithNutritionDTO>>(recipes);
             return Ok(recipeWithNutritionDTOs);
         }
+
+
+
+
+
     }
 }

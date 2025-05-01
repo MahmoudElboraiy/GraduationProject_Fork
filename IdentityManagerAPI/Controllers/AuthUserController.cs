@@ -17,7 +17,7 @@ namespace IdentityManagerAPI.Controllers
         }
 
         // Login
-        [HttpPost("login")]
+        [HttpPost("AuthenticateUser")]
         public async Task<IActionResult> Login([FromBody] LoginRequestDTO loginRequestDTO)
         {
             var result = await _authService.LoginAsync(loginRequestDTO);
@@ -25,7 +25,7 @@ namespace IdentityManagerAPI.Controllers
         }
 
         // Register
-        [HttpPost("register")]
+        [HttpPost("RegisterUser")]
         public async Task<IActionResult> Register([FromBody] RegisterRequestDTO registerRequestDTO)
         {
             var result = await _authService.RegisterAsync(registerRequestDTO);
@@ -33,7 +33,7 @@ namespace IdentityManagerAPI.Controllers
         }
 
         // Forgot-Password
-        [HttpPost("forgot-password")]
+        [HttpPost("RequestPasswordReset")]
         public async Task<IActionResult> ForgotPassword([FromBody] ForgotPasswordRequestDTO forgotPasswordRequestDTO)
         {
             var result = await _authService.ForgotPasswordAsync(forgotPasswordRequestDTO);
@@ -41,7 +41,7 @@ namespace IdentityManagerAPI.Controllers
         }
 
         // Reset-Password
-        [HttpPost("reset-password")]
+        [HttpPost("ResetUserPassword")]
         public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordDTO resetPasswordDTO)
         {
             var result = await _authService.ResetPasswordAsync(resetPasswordDTO);
