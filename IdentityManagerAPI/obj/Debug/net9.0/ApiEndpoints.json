@@ -64,7 +64,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "IdentityManagerAPI.Controllers.FavoritesController",
+    "ContainingType": "FavoritesController",
     "Method": "GetFavorites",
     "RelativePath": "api/Favorites",
     "HttpMethod": "GET",
@@ -74,7 +74,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "IdentityManagerAPI.Controllers.FavoritesController",
+    "ContainingType": "FavoritesController",
     "Method": "AddToFavorites",
     "RelativePath": "api/Favorites/{recipeId}",
     "HttpMethod": "POST",
@@ -90,7 +90,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "IdentityManagerAPI.Controllers.FavoritesController",
+    "ContainingType": "FavoritesController",
     "Method": "RemoveFromFavorites",
     "RelativePath": "api/Favorites/{recipeId}",
     "HttpMethod": "DELETE",
@@ -106,9 +106,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "IdentityManagerAPI.Controllers.FoodController",
-    "Method": "getALL",
-    "RelativePath": "Api/Food/AllIngredients",
+    "ContainingType": "FoodController",
+    "Method": "GetAllIngredients",
+    "RelativePath": "api/Food/ingredients",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -116,29 +116,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "IdentityManagerAPI.Controllers.FoodController",
-    "Method": "Get500Recipes",
-    "RelativePath": "Api/Food/First500RecipesWithNutritionAndIngredients",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "IdentityManagerAPI.Controllers.FoodController",
-    "Method": "GetRecipesWithFullNutrition",
-    "RelativePath": "Api/Food/RecipesWithNutritionAndIngredients",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "IdentityManagerAPI.Controllers.FoodController",
-    "Method": "GetSearchByIngredient",
-    "RelativePath": "Api/Food/SearchIngredientIdsByName/{ingredientName}",
+    "ContainingType": "FoodController",
+    "Method": "SearchIngredientIdsByName",
+    "RelativePath": "api/Food/ingredients/search/by-name/{ingredientName}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -152,15 +132,35 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "IdentityManagerAPI.Controllers.FoodController",
-    "Method": "PostSearchByIngredientId",
-    "RelativePath": "Api/Food/SearchRecipesByIngredientIds",
+    "ContainingType": "FoodController",
+    "Method": "GetAllRecipes",
+    "RelativePath": "api/Food/recipes",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FoodController",
+    "Method": "GetRecipePreview",
+    "RelativePath": "api/Food/recipes/preview",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FoodController",
+    "Method": "SearchRecipesByIngredientIds",
+    "RelativePath": "api/Food/recipes/search/by-ingredient-ids",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "ingredientsId",
+        "Name": "ingredientIds",
         "Type": "System.Collections.Generic.List\u00601[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "IsRequired": true
       }
@@ -178,15 +178,15 @@
     ]
   },
   {
-    "ContainingType": "IdentityManagerAPI.Controllers.FoodController",
-    "Method": "GetSearchByName",
-    "RelativePath": "Api/Food/SearchRecipesByName/{Name}",
+    "ContainingType": "FoodController",
+    "Method": "SearchRecipesByName",
+    "RelativePath": "api/Food/recipes/search/by-name/{name}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Name",
+        "Name": "name",
         "Type": "System.String",
         "IsRequired": true
       }

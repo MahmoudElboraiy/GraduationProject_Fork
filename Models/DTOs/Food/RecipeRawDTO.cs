@@ -13,7 +13,7 @@ namespace Models.DTOs.Food
         public string Description { get; set; } = null!;
         public string? Preparation_Method { get; set; }
         public int Time { get; set; }
-        public string Type { get; set; } = "General";
+        public string Type { get; set; } 
         public double Calories_100g { get; set; }
         public double Fat_100g { get; set; }
         public double Sugar_100g { get; set; }
