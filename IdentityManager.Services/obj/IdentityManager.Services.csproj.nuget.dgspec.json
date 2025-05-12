@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Test\\IdentityManager.Services\\IdentityManager.Services.csproj": {}
+    "C:\\Users\\mahmo\\Source\\Repos\\GraduationProject_Fork\\IdentityManager.Services\\IdentityManager.Services.csproj": {}
   },
   "projects": {
-    "D:\\Test\\DataAcess\\DataAcess.csproj": {
+    "C:\\Users\\mahmo\\Source\\Repos\\GraduationProject_Fork\\DataAcess\\DataAcess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Test\\DataAcess\\DataAcess.csproj",
+        "projectUniqueName": "C:\\Users\\mahmo\\Source\\Repos\\GraduationProject_Fork\\DataAcess\\DataAcess.csproj",
         "projectName": "DataAcess",
-        "projectPath": "D:\\Test\\DataAcess\\DataAcess.csproj",
-        "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
-        "outputPath": "D:\\Test\\DataAcess\\obj\\",
+        "projectPath": "C:\\Users\\mahmo\\Source\\Repos\\GraduationProject_Fork\\DataAcess\\DataAcess.csproj",
+        "packagesPath": "C:\\Users\\mahmo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mahmo\\Source\\Repos\\GraduationProject_Fork\\DataAcess\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\LENOVO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\mahmo\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -32,8 +32,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "D:\\Test\\Models\\Models.csproj": {
-                "projectPath": "D:\\Test\\Models\\Models.csproj"
+              "C:\\Users\\mahmo\\Source\\Repos\\GraduationProject_Fork\\Models\\Models.csproj": {
+                "projectPath": "C:\\Users\\mahmo\\Source\\Repos\\GraduationProject_Fork\\Models\\Models.csproj"
               }
             }
           }
@@ -48,7 +48,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.100"
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net9.0": {
@@ -100,29 +100,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
-        }
-      },
-      "runtimes": {
-        "win-x86": {
-          "#import": []
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Test\\IdentityManager.Services\\IdentityManager.Services.csproj": {
+    "C:\\Users\\mahmo\\Source\\Repos\\GraduationProject_Fork\\IdentityManager.Services\\IdentityManager.Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Test\\IdentityManager.Services\\IdentityManager.Services.csproj",
+        "projectUniqueName": "C:\\Users\\mahmo\\Source\\Repos\\GraduationProject_Fork\\IdentityManager.Services\\IdentityManager.Services.csproj",
         "projectName": "IdentityManager.Services",
-        "projectPath": "D:\\Test\\IdentityManager.Services\\IdentityManager.Services.csproj",
-        "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
-        "outputPath": "D:\\Test\\IdentityManager.Services\\obj\\",
+        "projectPath": "C:\\Users\\mahmo\\Source\\Repos\\GraduationProject_Fork\\IdentityManager.Services\\IdentityManager.Services.csproj",
+        "packagesPath": "C:\\Users\\mahmo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mahmo\\Source\\Repos\\GraduationProject_Fork\\IdentityManager.Services\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\LENOVO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\mahmo\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -137,11 +132,11 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "D:\\Test\\DataAcess\\DataAcess.csproj": {
-                "projectPath": "D:\\Test\\DataAcess\\DataAcess.csproj"
+              "C:\\Users\\mahmo\\Source\\Repos\\GraduationProject_Fork\\DataAcess\\DataAcess.csproj": {
+                "projectPath": "C:\\Users\\mahmo\\Source\\Repos\\GraduationProject_Fork\\DataAcess\\DataAcess.csproj"
               },
-              "D:\\Test\\Models\\Models.csproj": {
-                "projectPath": "D:\\Test\\Models\\Models.csproj"
+              "C:\\Users\\mahmo\\Source\\Repos\\GraduationProject_Fork\\Models\\Models.csproj": {
+                "projectPath": "C:\\Users\\mahmo\\Source\\Repos\\GraduationProject_Fork\\Models\\Models.csproj"
               }
             }
           }
@@ -156,7 +151,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.100"
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net9.0": {
@@ -177,29 +172,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
-        }
-      },
-      "runtimes": {
-        "win-x86": {
-          "#import": []
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Test\\Models\\Models.csproj": {
+    "C:\\Users\\mahmo\\Source\\Repos\\GraduationProject_Fork\\Models\\Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Test\\Models\\Models.csproj",
+        "projectUniqueName": "C:\\Users\\mahmo\\Source\\Repos\\GraduationProject_Fork\\Models\\Models.csproj",
         "projectName": "Models",
-        "projectPath": "D:\\Test\\Models\\Models.csproj",
-        "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
-        "outputPath": "D:\\Test\\Models\\obj\\",
+        "projectPath": "C:\\Users\\mahmo\\Source\\Repos\\GraduationProject_Fork\\Models\\Models.csproj",
+        "packagesPath": "C:\\Users\\mahmo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mahmo\\Source\\Repos\\GraduationProject_Fork\\Models\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\LENOVO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\mahmo\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -226,7 +216,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.100"
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net9.0": {
@@ -261,12 +251,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
-        }
-      },
-      "runtimes": {
-        "win-x86": {
-          "#import": []
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

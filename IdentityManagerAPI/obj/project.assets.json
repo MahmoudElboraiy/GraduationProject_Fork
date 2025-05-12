@@ -6000,23 +6000,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\LENOVO\\.nuget\\packages\\": {},
+    "C:\\Users\\mahmo\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Test\\IdentityManagerAPI\\Graduation project APIs.csproj",
+      "projectUniqueName": "C:\\Users\\mahmo\\Source\\Repos\\GraduationProject_Fork\\IdentityManagerAPI\\Graduation project APIs.csproj",
       "projectName": "Graduation project APIs",
-      "projectPath": "D:\\Test\\IdentityManagerAPI\\Graduation project APIs.csproj",
-      "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
-      "outputPath": "D:\\Test\\IdentityManagerAPI\\obj\\",
+      "projectPath": "C:\\Users\\mahmo\\Source\\Repos\\GraduationProject_Fork\\IdentityManagerAPI\\Graduation project APIs.csproj",
+      "packagesPath": "C:\\Users\\mahmo\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\mahmo\\Source\\Repos\\GraduationProject_Fork\\IdentityManagerAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\LENOVO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\mahmo\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -6031,14 +6031,14 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "D:\\Test\\DataAcess\\DataAcess.csproj": {
-              "projectPath": "D:\\Test\\DataAcess\\DataAcess.csproj"
+            "C:\\Users\\mahmo\\Source\\Repos\\GraduationProject_Fork\\DataAcess\\DataAcess.csproj": {
+              "projectPath": "C:\\Users\\mahmo\\Source\\Repos\\GraduationProject_Fork\\DataAcess\\DataAcess.csproj"
             },
-            "D:\\Test\\IdentityManager.Services\\IdentityManager.Services.csproj": {
-              "projectPath": "D:\\Test\\IdentityManager.Services\\IdentityManager.Services.csproj"
+            "C:\\Users\\mahmo\\Source\\Repos\\GraduationProject_Fork\\IdentityManager.Services\\IdentityManager.Services.csproj": {
+              "projectPath": "C:\\Users\\mahmo\\Source\\Repos\\GraduationProject_Fork\\IdentityManager.Services\\IdentityManager.Services.csproj"
             },
-            "D:\\Test\\Models\\Models.csproj": {
-              "projectPath": "D:\\Test\\Models\\Models.csproj"
+            "C:\\Users\\mahmo\\Source\\Repos\\GraduationProject_Fork\\Models\\Models.csproj": {
+              "projectPath": "C:\\Users\\mahmo\\Source\\Repos\\GraduationProject_Fork\\Models\\Models.csproj"
             }
           }
         }
@@ -6053,7 +6053,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.100"
+      "SdkAnalysisLevel": "9.0.200"
     },
     "frameworks": {
       "net9.0": {
@@ -6113,7 +6113,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

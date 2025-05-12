@@ -10,6 +10,7 @@ namespace Models.Domain
 {
     public class Image
     {
+        // this is fork 
         public int Id { get; set; }
         [NotMapped]
         public IFormFile File { get; set; }
